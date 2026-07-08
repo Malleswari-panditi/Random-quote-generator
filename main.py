@@ -1,6 +1,7 @@
 import tkinter as tk
 import random
 
+
 quotes = [
     ("You don't have to have everything figured out today. Just keep moving forward.", "🌸 Gentle Reminder"),
     ("The flowers don't compete. They simply bloom. Your time will come too.", "🌼 Growth"),
@@ -39,86 +40,96 @@ def copy_quote():
     window.clipboard_clear()
     window.clipboard_append(quote_label.cget("text"))
 
-# Main Window
 window = tk.Tk()
 window.title("The Wisdom Vault")
 window.geometry("850x550")
-window.configure(bg="white")
+window.resizable(False, False)
 
-# Heading
+# Dark Purple Theme
+window.configure(bg="#16121F")
+
+
 heading = tk.Label(
     window,
     text="✨ A Little Reminder ✨",
-    font=("Segoe UI", 26, "bold"),
-    bg="white",
-    fg="black"
+    font=("Segoe UI", 28, "bold"),
+    bg="#16121F",
+    fg="white"
 )
-heading.pack(pady=20)
+heading.pack(pady=(25, 10))
 
-# Quote
+
 quote_label = tk.Label(
     window,
     text="💫 Ready for today's thought?",
-    font=("Georgia", 18, "italic"),
+    font=("Georgia", 19, "italic"),
     wraplength=700,
     justify="center",
-    bg="white",
-    fg="black"
+    bg="#16121F",
+    fg="white"
 )
-quote_label.pack(pady=50)
+quote_label.pack(pady=55)
 
-# Category
+
 author_label = tk.Label(
     window,
     text="",
-    font=("Segoe UI", 13, "italic"),
-    bg="white",
-    fg="#2E8B57"
+    font=("Segoe UI", 14, "italic"),
+    bg="#16121F",
+    fg="#C8A2FF"
 )
 author_label.pack()
 
-# Open Button
+
 button = tk.Button(
     window,
     text="💌 Open My Note",
     font=("Segoe UI", 14, "bold"),
-    bg="#2ecc71",
+    bg="#2ECC71",
     fg="white",
-    activebackground="#27ae60",
+    activebackground="#27AE60",
     activeforeground="white",
-    padx=25,
-    pady=10,
-    cursor="hand2",
+    padx=28,
+    pady=12,
     relief="flat",
+    cursor="hand2",
     command=show_quote
 )
-button.pack(pady=25)
+button.pack(pady=28)
 
-# Copy Button
+# Hover Effect
+button.bind("<Enter>", lambda e: button.config(bg="#27AE60"))
+button.bind("<Leave>", lambda e: button.config(bg="#2ECC71"))
+
 copy_button = tk.Button(
     window,
     text="📋 Copy Message",
     font=("Segoe UI", 12, "bold"),
-    bg="#555555",
+    bg="#4B3B68",
     fg="white",
-    activebackground="#777777",
+    activebackground="#5D4A80",
     activeforeground="white",
-    padx=20,
-    pady=8,
-    cursor="hand2",
+    padx=22,
+    pady=9,
     relief="flat",
+    cursor="hand2",
     command=copy_quote
 )
 copy_button.pack()
 
-# Footer
+# Hover Effect
+copy_button.bind("<Enter>", lambda e: copy_button.config(bg="#5D4A80"))
+copy_button.bind("<Leave>", lambda e: copy_button.config(bg="#4B3B68"))
+
+
 footer = tk.Label(
     window,
-    text="Made with hope🌱 ",
+    text="Made with hope 🌱",
     font=("Segoe UI", 10),
-    bg="white",
-    fg="gray"
+    bg="#16121F",
+    fg="#B8B8B8"
 )
-footer.pack(side="bottom", pady=15)
+footer.pack(side="bottom", pady=18)
+
 
 window.mainloop()
